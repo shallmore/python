@@ -16,54 +16,56 @@ from dash.dependencies import Input, Output, State
 import json
 import re
 
-app = dash.Dash(__name__)
+app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
+app.title = '政府绩效录入小能手 V1'
+locations = ["甘肃", "陕西", "青海", "宁夏", "浙江", "四川"]
 
 app.layout = html.Div(
     dbc.Container(
         [
             html.H1('2023年县级政府绩效评价录入系统',
-                style={'color': '#b00404','text-align':'center'
+                style = {'color': '#b00404','text-align':'center'
                 }
             ),
             html.Br(),
 
             html.H2('第一部分 - 录入员个人信息',
-                style={'color': '#3156de','text-align':'center'
+                style = {'color': '#3156de','text-align':'center'
                 }
             ),
             html.Hr(),
 
             html.P('1.姓名：'),
             dbc.Input(
-                id='recorder',
-                placeholder='填写录入员姓名',
-                autoComplete='off',
-                style={
+                id = 'recorder',
+                placeholder = '填写录入员姓名',
+                autoComplete = 'off',
+                style = {
                     'width': '250px',
                 }
             ),
 
             html.P('2.手机号码：'),
             dbc.Input(
-                id='tel',
-                placeholder='填写登记手机号',
-                autoComplete='off',
-                style={
+                id = 'tel',
+                placeholder = '填写登记手机号',
+                autoComplete = 'off',
+                style = {
                     'width': '250px',
                 }
             ),
 
             html.P('3.分组：'),
             dbc.RadioItems(
-                style = {'inline': 'True'},
                 id = 'group',
+                inline = True,
+                switch = True,
                 options=[
                     {'label': '1组', 'value': 'g1', 'color': '#b00404', 'font-size': 20},
                     {'label': '2组', 'value': 'g2', 'color': 'Warning', 'font-size': 20},
                     {'label': '3组', 'value': 'g3', 'color': '#b00404', 'font-size': 20},
                     {'label': '4组', 'value': 'g4', 'color': 'Success', 'font-size': 20},
                 ],
-                inline = True,
                 labelStyle = {
                     'color': '#3156de',
                     'text-align': 'justify'
@@ -93,16 +95,17 @@ app.layout = html.Div(
             html.Hr(),
 
             html.P('5.所在省份：'),
+
             dbc.RadioItems(
                 id='province',
-                inline=True,
-#                switch=True,             
+                inline = True,
+                switch = True,      
                 options=[
                     {'label': item, 'value': item}
-                    for item in list ('甘肃''陕西''青海''西藏''宁夏''新疆''浙江')
+                    for item in list (set(locations))
                 ],
                 style={
-                    'width': '200px'
+                    'width': '800px'
                 }
             ),
 
