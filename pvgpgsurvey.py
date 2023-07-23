@@ -72,10 +72,10 @@ app.layout = html.Div(
                     'color': '#3156de',
                     'text-align': 'justify'
                 },
-#                labelCheckedStyle = {
-#                    'color': '#b00404',
-#                    'text-align': 'justify'
-#                }
+                labelCheckedStyle = {
+                    'color': '#b00404',
+                    'text-align': 'justify'
+                }
             ),
 
             html.P('4.录入日期：'),
@@ -99,14 +99,14 @@ app.layout = html.Div(
             html.P('5.所在省份：'),
 
             dbc.RadioItems(
-                id='province',
+                id = 'province',
                 inline = True,
                 switch = True,      
-                options=[
+                options = [
                     {'label': item, 'value': item}
                     for item in list (set(locations))
                 ],
-                style={
+                style = {
                     'width': '800px'
                 }
             ),
@@ -114,15 +114,16 @@ app.layout = html.Div(
             html.Br(),
 
             html.P('6.满意度：'),
-            dbc.Input(id='sat-range',
-                placeholder='满意度',
-                type='range',
-                style={'width': '300px'},
-                min=0,
-                max=100,
-                step=2,
+            dbc.Input(
+                id = 'sat-range',
+                placeholder = '满意度',
+                type = 'range',
+                style = {'width': '300px'},
+                min = 0,
+                max = 100,
+                step = 2,
             ),
-            html.P(id='output-range'),
+            html.P(id = 'output-range'),
 
             html.P('7.所在城市：'),
             dbc.Input(
@@ -150,12 +151,20 @@ app.layout = html.Div(
             dbc.Checklist(
                 id = 'dptment',
                 inline = True,
-#                switch = True,
+                switch = True,
                 options=[
                     {'label': item, 'value': item}
                     for item in list (set(departments))
                 ],
-                style={
+#                labelStyle = {
+#                    'color': '#3156de',
+#                    'text-align': 'justify'
+#                },
+                labelCheckedStyle = {
+                    'color': '#b00404',
+                    'text-align': 'justify'
+                },
+                style = {
                     'width': '400px'
                 }
                 ),
@@ -174,7 +183,15 @@ app.layout = html.Div(
                     {'label': '爬虫工程师', 'value': '爬虫工程师'},
                     {'label': '学生', 'value': '学生'},
                     {'label': '其他', 'value': '其他'},
-                    ]
+                    ],
+                labelStyle = {
+                    'color': '#3156de',
+                    'text-align': 'justify'
+                },
+                labelCheckedStyle = {
+                    'color': '#b00404',
+                    'text-align': 'justify'
+                }
                 ),
             html.Br(),
 
