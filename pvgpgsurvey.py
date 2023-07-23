@@ -16,7 +16,8 @@ from dash.dependencies import Input, Output, State
 import json
 import re
 
-app = dash.Dash(external_stylesheets=[dbc.themes.SOLAR]) #Darkly, Quartz, SLATE, SOLAR
+app = dash.Dash(__name__) # 两种写法，这一行可以写成app = dash.Dash(external_stylesheets=[dbc.themes.SOLAR]), 则不用下面一行了 #Darkly, Quartz, SLATE, SOLAR，具体可以参考 https://dash-bootstrap-components.opensource.faculty.ai/docs/themes/explorer/
+app.config.external_stylesheets = [dbc.themes.SOLAR]
 app.title = '政府绩效录入小能手 V1'
 locations = ["甘肃", "陕西", "青海", "宁夏", "浙江", "四川"]
 departments = ["工商", "税务", "人事", "市政", "公安", "卫生"]
