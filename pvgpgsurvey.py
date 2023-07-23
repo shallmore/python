@@ -16,15 +16,16 @@ from dash.dependencies import Input, Output, State
 import json
 import re
 
-app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = dash.Dash(external_stylesheets=[dbc.themes.SOLAR]) #Darkly, Quartz, SLATE, SOLAR
 app.title = '政府绩效录入小能手 V1'
 locations = ["甘肃", "陕西", "青海", "宁夏", "浙江", "四川"]
+departments = ["工商", "税务", "人事", "市政", "公安", "卫生"]
 
 app.layout = html.Div(
     dbc.Container(
         [
             html.H1('2023年县级政府绩效评价录入系统',
-                style = {'color': '#b00404','text-align':'center'
+                style = {'color': '#b00404', 'text-align':'center'
                 }
             ),
             html.Br(),
@@ -118,37 +119,48 @@ app.layout = html.Div(
                 style={'width': '300px'},
                 min=0,
                 max=100,
-                step=5,
+                step=2,
             ),
             html.P(id='output-range'),
 
-            html.P('6.所在城市：'),
-            dbc.RadioItems(
-                id = 'frequency',
-                inline = True,
-                options = [
-                    {'label': '经常', 'value': 'often'},
-                    {'label': '偶尔', 'value': 'little'},
-                    {'label': '没用过', 'value': 'no-use'}
-                ]
+            html.P('7.所在城市：'),
+            dbc.Input(
+                id = 'city',
+                placeholder = '请直接填写，例: 兰州',
+                autoComplete = 'off',
+                style = {
+                    'width': '250px'
+                }
+            ),
+            html.Br(),
+
+            html.P('8.所在县：'),
+            dbc.Input(
+                id = 'county',
+                placeholder = '请直接填写，例: 城关',
+                autoComplete = 'off',
+                style = {
+                    'width': '250px'
+                }
             ),
             html.Br(),
             
-            html.P('7.所在县：'),
+            html.P('9.涉及部门：'),
             dbc.Checklist(
-                id = 'hobbies',
-                options = [
-                    {'label': '构建在线数据可视化作品', 'value': 'web'},
-                    {'label': '制作机器学习demo', 'value': 'ml'},
-                    {'label': '为企业开发BI仪表盘', 'value': 'bi'},
-                    {'label': '为企业开发酷炫的指标监控大屏', 'value': 'screen'},
-                    {'label': '开发有用的在线小工具', 'value': 'tools'},
-                    {'label': '其他', 'value': 'other'},
-                    ]
+                id = 'dptment',
+                inline = True,
+#                switch = True,
+                options=[
+                    {'label': item, 'value': item}
+                    for item in list (set(departments))
+                ],
+                style={
+                    'width': '400px'
+                }
                 ),
             html.Br(),
             
-            html.P('8.所在部门：'),
+            html.P('10.所在部门：'),
             dbc.RadioItems(
                 id = 'career',
                 options = [
@@ -187,13 +199,20 @@ app.layout = html.Div(
                 id = 'submit'
             ),
             
-            html.P(id = 'user-info')
+            html.P(id = 'user-info'),
+
+            html.H6('~骄傲地由中国地方政府绩效中心开发和维护~',
+                style = {'color': '#ffa000','text-align':'center'
+                }
+            ),
+            html.Hr()
         ],
 #        style = {
 #            'display': 'inline-block',
 #            'margin-top': '50px',
 #            'margin-bottom': '200px'
 #        }
+
     )
 )
 
