@@ -1,5 +1,6 @@
 '''
 制作在线问卷调查
+参考了这个：https://blog.csdn.net/qq_41200768/article/details/121073375@@@问卷系统
 要用到的知识: https://getbootstrap.com, 这个是一个CSS框架, 在dash_bootstrap_components里面用到
 dash_bootstrap_components 是对于 dash-core-components 的扩展, 有一些区别, 后者不包括button按钮, 不提供container
 https://dash.plotly.com/dash-core-components
@@ -260,7 +261,7 @@ def fetch_info(n_clicks, gender, province, frequency, hobbies, tel):
             json.dump(
                 {
                     'gender': gender,
-                    'code_language': code_language,
+                    'recorder': recorder,
                     'frequency': frequency,
                     'hobbies': hobbies,
                 }, jf
