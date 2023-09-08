@@ -8,7 +8,7 @@ def convert():
     output_string.set(km_output)
 
 #window
-window = tk.Tk()
+window = ttk.Window(themename= 'journal') # darkly
 window.title('Dou')
 window.geometry('300x300')
 
