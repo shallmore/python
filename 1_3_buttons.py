@@ -16,15 +16,11 @@ button = ttk.Button(window, text = 'A simple button', command = lambda: print('a
 # button = ttk.Button(window, text = 'A simple button', command = button_func)  # 本行和上面一行相同，上面使用了lambda
 button.pack()
 
-
-
-'''
-
 # checkbutton
-check_var = tk.IntVar(value = 10)
+check_var = tk.IntVar()
 check1 = ttk.Checkbutton(
 	window, 
-	text = 'checkbox 1', 
+	text = 'check box1', 
 	command = lambda: print(check_var.get()),
 	variable = check_var,
 	onvalue = 10,
@@ -42,12 +38,16 @@ radio_var = tk.StringVar()
 radio1 = ttk.Radiobutton(
 	window, 
 	text = 'Radiobutton 1', 
-	value = 1, 
+	value = 'radio 1', 
 	variable = radio_var,
 	command = lambda: print(radio_var.get()))
 radio1.pack()
 
-radio2 = ttk.Radiobutton(window, text = 'Radiobutton 2', value = 1, variable = radio_var)
+radio2 = ttk.Radiobutton(
+	window, 
+	text = 'Radiobutton 2', 
+	value = 2, 
+	variable = radio_var)
 radio2.pack()
 
 # create another checkbutton and 2 radiobuttons 
@@ -60,28 +60,29 @@ radio2.pack()
 	# use tkinter var for Booleans! 
 
 # exercise radios 
-
 def radio_func():
 	print(check_bool.get())
 	check_bool.set(False)
 
-# data
+#data
 radio_string = tk.StringVar()
 check_bool = tk.BooleanVar()
 
-# widgets
+#widgets
 exercise_radio1 = ttk.Radiobutton(
 	window, 
 	text = 'Radio A', 
 	value = 'A', 
-	command = radio_func, 
+	command = radio_func,
 	variable = radio_string)
+
 exercise_radio2 = ttk.Radiobutton(
 	window, 
 	text = 'Radio B', 
 	value = 'B', 
-	command = radio_func, 
+	command = radio_func,
 	variable = radio_string)
+
 exercise_check = ttk.Checkbutton(
 	window, 
 	text = 'exercise check', 
@@ -92,9 +93,6 @@ exercise_check = ttk.Checkbutton(
 exercise_radio1.pack()
 exercise_radio2.pack()
 exercise_check.pack()
-
-'''
-
-
+ 
 # run 
 window.mainloop()
