@@ -16,11 +16,11 @@ window = ttk.Window()
 window.title('buttons, functions and arguments')
 
 # widgets 
-entry_string = tk.StringVar(value = 'here')
+entry_string = tk.StringVar(value = 'I am here')
 entry = ttk.Entry(window, textvariable = entry_string)
 entry.pack()
 
-button = ttk.Button(window, text = 'button', command = lambda: button_func(entry_string))
+button = ttk.Button(window, text = 'A button', command = lambda: button_func(entry_string))
 button.pack()
 
 # run
