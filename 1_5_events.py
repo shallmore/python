@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
+import ttkbootstrap as ttk
 
 # list of events
 # pythontutorial.net/tkinter/tkinter-event-binding
@@ -8,8 +8,8 @@ def get_pos(event):
 	print(f'x: {event.x} y: {event.y}')
 
 # window
-window = tk.Tk()
-window.geometry('600x500')
+window = ttk.Window(themename = 'solar')
+window.geometry('800x1000')
 window.title('Event Binding')
 
 # widgets 
